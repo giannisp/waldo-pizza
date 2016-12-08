@@ -1,10 +1,10 @@
 /**
- * @fileOverview The Order Form container.
+ * @fileOverview The Pizza Item container.
  */
 import { connect } from 'react-redux';
 
-import OrderForm from '../components/order-form.comp';
-import { addPizzaItemToCart } from '../actions/cart.action';
+import PizzaItem from '../components/pizza-item.comp';
+import { removePizzaItemFromCart } from '../actions/cart.action';
 
 /**
  * Handle state change and map it to local component props.
@@ -24,8 +24,8 @@ function mapStateToProps(/*state*/) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    onAddToCart: (pizzaItem) => {
-      dispatch(addPizzaItemToCart(pizzaItem));
+    onRemoveFromCart: (pizzaItem) => {
+      dispatch(removePizzaItemFromCart(pizzaItem));
     },
   };
 }
@@ -33,4 +33,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(OrderForm);
+)(PizzaItem);

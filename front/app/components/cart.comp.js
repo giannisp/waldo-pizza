@@ -4,6 +4,8 @@
 
 import React from 'react';
 
+import PizzaItemCont from '../containers/pizza-item.cont';
+
 export default class Cart extends React.Component {
   render() {
     const {
@@ -20,7 +22,7 @@ export default class Cart extends React.Component {
         {
           pizzaItems.map(function(pizzaItem, index) {
             return (
-              <div key={ index }>{ pizzaItem.size }</div>
+              <PizzaItemCont key={ index } pizzaItem={ pizzaItem } />
             );
           })
         }

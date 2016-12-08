@@ -109,6 +109,8 @@ export default class OrderForm extends React.Component {
               );
             })
           }
+          <button type="button" onClick={ this._addPizzaToCart.bind(this) }>
+            Add to Cart!</button>
         </div>
       }
       </div>
@@ -224,7 +226,27 @@ export default class OrderForm extends React.Component {
       maxToppingLimitReached: maxToppingLimitReached,
     });
   }
+
+  /**
+   * Handle adding pizza to cart.
+   */
+  _addPizzaToCart() {
+    const {
+      pizzaSizes,
+      selectedPizzaSize,
+      selectedToppings,
+    } = this.state;
+
+    let pizzaItem = {
+      pizzaSize: _.findWhere(pizzaSizes, {name: selectedPizzaSize}),
+      toppings: selectedToppings,
+    };
+
+    this.props.onAddToCart(pizzaItem);
+  }
 }
 
 /** @const {Object} propTypes definition */
-OrderForm.propTypes = {};
+OrderForm.propTypes = {
+  onAddToCart: React.PropTypes.func.isRequired,
+};
