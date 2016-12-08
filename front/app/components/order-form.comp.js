@@ -26,11 +26,13 @@ export default class OrderForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
-          { this._renderPizzaSizes() }
-          { this._renderPizzaToppings() }
-        </form>
+      <div className="row">
+        <div className="col-sm-12">
+          <form className="order-form">
+            { this._renderPizzaSizes() }
+            { this._renderPizzaToppings() }
+          </form>
+        </div>
       </div>
     );
   }
@@ -50,7 +52,8 @@ export default class OrderForm extends React.Component {
           <div>
             <h2>Order Form:</h2>
             <label>Pizza Size:</label>
-            <select ref={ (el) => this.elements.pizzaSize = el }>
+            <select className="form-control"
+              ref={ (el) => this.elements.pizzaSize = el }>
             {
               pizzaSizes.map((pizzaSize, index) => {
                 return (
@@ -61,7 +64,8 @@ export default class OrderForm extends React.Component {
               })
             }
             </select>
-            <button type="button" onClick={ this._onPizzaSizeSelect.bind(this)}>
+            <button type="button" className="btn btn-primary"
+              onClick={ this._onPizzaSizeSelect.bind(this)}>
               Select</button>
           </div>
         }
@@ -97,7 +101,7 @@ export default class OrderForm extends React.Component {
                 (!isSelected && maxToppingLimitReached);
 
               return (
-                <p key={ index }>
+                <div className="checkbox" key={ index }>
                   <label>
                     <input type="checkbox"
                       defaultChecked={ topping.defaultSelected }
@@ -105,12 +109,12 @@ export default class OrderForm extends React.Component {
                       onChange={ this._onToppingChange.bind(this, index) } />
                     { topping.topping.name } (${ topping.topping.price })
                   </label>
-                </p>
+                </div>
               );
             })
           }
-          <button type="button" onClick={ this._addPizzaToCart.bind(this) }>
-            Add to Cart!</button>
+          <button type="button" className="btn btn-primary"
+            onClick={ this._addPizzaToCart.bind(this) }>Add to Cart!</button>
         </div>
       }
       </div>
@@ -243,6 +247,13 @@ export default class OrderForm extends React.Component {
     };
 
     this.props.onAddToCart(pizzaItem);
+
+    // reset form state
+    this.setState({
+      toppings: [],
+      maxToppings: 0,
+      selectedToppings: [],
+    });
   }
 }
 

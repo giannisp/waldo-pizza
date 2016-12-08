@@ -1,0 +1,11 @@
+.order-form select {
+  max-width: 140px;
+}
+
+.order-form button {
+  margin-top: 15px;
+}
+
+.cart-item button {
+  margin-bottom: 15px;
+}

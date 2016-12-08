@@ -13,19 +13,21 @@ export default class Cart extends React.Component {
     } = this.props;
 
     return (
-      <div>
-        <h2>Cart:</h2>
-        {
-          pizzaItems.length === 0 &&
-          <p>Empty, order some pizzas!</p>
-        }
-        {
-          pizzaItems.map(function(pizzaItem, index) {
-            return (
-              <PizzaItemCont key={ index } pizzaItem={ pizzaItem } />
-            );
-          })
-        }
+      <div className="row">
+        <div className="col-sm-12">
+          <h2>Cart:</h2>
+          {
+            pizzaItems.length === 0 &&
+            <p>Empty, order some pizzas!</p>
+          }
+          {
+            pizzaItems.map(function(pizzaItem, index) {
+              return (
+                <PizzaItemCont key={ index } pizzaItem={ pizzaItem } />
+              );
+            })
+          }
+        </div>
       </div>
     );
   }

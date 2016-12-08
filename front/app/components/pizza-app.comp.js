@@ -10,7 +10,7 @@ import OrderFormCont from '../containers/order-form.cont';
 export default class PizzaApp extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <CartCont />
         <OrderFormCont />
       </div>

@@ -11,7 +11,9 @@ export default class PizzaItem extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div className="col-lg-3 col-sm-12 cart-item">
+        <button type="button" className="btn btn-danger"
+          onClick={ this._removeFromCart.bind(this) }>Remove from Cart</button>
         <p>{ pizzaItem.pizzaSize.name } ({ pizzaItem.pizzaSize.basePrice })</p>
         {
           pizzaItem.toppings.map((topping, index) => {
@@ -22,8 +24,6 @@ export default class PizzaItem extends React.Component {
             );
           })
         }
-        <button type="button" onClick={ this._removeFromCart.bind(this) }
-          >Remove from Cart</button>
       </div>
     );
   }
