@@ -145,13 +145,13 @@ export default class OrderForm extends React.Component {
   _onPizzaSizeSelect() {
     let pizzaSize = this.elements.pizzaSize.value;
 
-    // reset state
+    // set selected pizza
     this.setState({
       selectedPizzaSize: pizzaSize,
-      toppings: [],
-      maxToppings: 0,
-      selectedToppings: [],
     });
+
+    // reset form state
+    this._resetFormState();
 
     // Fetch pizza sizes
     pizzaService
@@ -254,12 +254,21 @@ export default class OrderForm extends React.Component {
     this.props.onAddToCart(pizzaItem);
 
     // reset form state
+    this._resetFormState();
+  }
+
+  /**
+   * Reset form state.
+   */
+  _resetFormState() {
     this.setState({
       toppings: [],
       maxToppings: 0,
       selectedToppings: [],
+      maxToppingLimitReached: false,
     });
   }
+
 }
 
 /** @const {Object} propTypes definition */
