@@ -1,0 +1,4 @@
+{
+  "presets": ["es2015", "react"],
+  "only": ["front/app/*.js", "front/app/**/*.js"]
+}
