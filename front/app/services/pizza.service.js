@@ -24,6 +24,29 @@ pizzaService.fetchPizzaSizes = function() {
   return this.fetch(query);
 };
 
+/**
+ * Fetch pizza toppings by size.
+ *
+ * @param {String} pizzaSize The pizzaSize to fetch toppings for.
+ * @return {Promise} The axios request promise.
+ */
+pizzaService.fetchPizzaToppings = function(pizzaSize) {
+  let query = `{
+    pizzaSizeByName(name: "${pizzaSize}") {
+      maxToppings
+      toppings {
+    	  topping {
+    	    name
+    	    price
+    	  }
+       defaultSelected
+      }
+    }
+  }`;
+
+  return this.fetch(query);
+};
+
 pizzaService.fetch = function(query) {
   let data = {query: query};
 
