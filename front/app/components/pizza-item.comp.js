@@ -12,7 +12,16 @@ export default class PizzaItem extends React.Component {
 
     return (
       <div>
-        <p>{ pizzaItem.pizzaSize.name }</p>
+        <p>{ pizzaItem.pizzaSize.name } ({ pizzaItem.pizzaSize.basePrice })</p>
+        {
+          pizzaItem.toppings.map((topping, index) => {
+            return (
+              <p key={ index }>
+                { topping.topping.name } (${ topping.topping.price })
+              </p>
+            );
+          })
+        }
         <button type="button" onClick={ this._removeFromCart.bind(this) }
           >Remove from Cart</button>
       </div>
