@@ -10,20 +10,23 @@ export default class PizzaItem extends React.Component {
       pizzaItem,
     } = this.props;
 
+    let price = Number(pizzaItem.price).toFixed(2);
+
     return (
       <div className="col-lg-3 col-sm-12 cart-item">
         <button type="button" className="btn btn-danger"
           onClick={ this._removeFromCart.bind(this) }>Remove from Cart</button>
-        <p>{ pizzaItem.pizzaSize.name } ({ pizzaItem.pizzaSize.basePrice })</p>
+        <p>{ pizzaItem.pizzaSize.name } (${ pizzaItem.pizzaSize.basePrice })</p>
         {
           pizzaItem.toppings.map((topping, index) => {
             return (
-              <p key={ index }>
-                { topping.topping.name } (${ topping.topping.price })
-              </p>
+              <ul className="list-unstyled" key={ index }>
+                <li>{ topping.topping.name } (${ topping.topping.price })</li>
+              </ul>
             );
           })
         }
+        <p>Price: <strong>${ price }</strong></p>
       </div>
     );
   }

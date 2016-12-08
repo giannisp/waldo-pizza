@@ -6,6 +6,7 @@ import React from 'react';
 import _ from 'underscore';
 
 import pizzaService from '../services/pizza.service';
+import cartService from '../services/cart.service';
 
 export default class OrderForm extends React.Component {
   constructor(props) {
@@ -246,6 +247,10 @@ export default class OrderForm extends React.Component {
       toppings: selectedToppings,
     };
 
+    // calculate total price
+    pizzaItem.price = cartService.getPizzaItemPrice(pizzaItem);
+
+    // add pizza item to cart
     this.props.onAddToCart(pizzaItem);
 
     // reset form state
